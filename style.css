@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Mukta', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+}
+ 
+
+
+
+
+.logo-mario {
+    width: 300px;
+    margin-top: 40px;
+
+}
+
+.imagem-mario-luigi {
+    height: 400px;
+    margin-right: 150px;
+}
+
+.caixa-principal {
+    width: 40%;
+
+}
+
+.caixa-video-mario {
+
+    position: fixed;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+video {
+    position: fixed;
+    top: 0;
+    min-height: 100%;
+    min-width: 100%;
+
+}
+
+.mascara-video {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background: linear-gradient(109deg, rgba(10, 12, 16, 0.99) 15%, rgba(10, 12, 16, 0.7) 50%, rgba(10, 12, 16, 0.99) 85%);
+}
+
+p {
+    color: white;
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.encanadores {
+    font-size: 16px;
+    line-height: 0;
+}
+
+button {
+    height: 40px;
+    width: 200px;
+    color: white;
+    background: #c51111;
+    border: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    cursor: pointer;
+
+
+}
+
+button:hover {
+    background-color: rgb(27, 4, 159);
+}
+
+.link-whatsapp img {
+    height: 60px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin: 30px;
+    height: 60px;
+    position: fixed;
+    left: 10px;
+    top: 5px;
+
+}
+
+.header img {
+    height: 60px;
+
+
+}
+
+.header a {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 0px;
+}
+
+.header a:hover {
+    font-size: 26px;
+    transition: 0.5s ease-in-out;
+    color: #eb0000
+}
+
+
+.formulario-fale-conosco {
+    background: white;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    position: fixed;
+    left: -330px;
+    top: 30%;
+    padding: 20px;
+    border-radius: 8px;
+    transition: left 1s ease-in-out;
+
+}
+
+input {
+    height: 40px;
+    border-radius: 3px;
+    border: 1px solid gray;
+    padding-left: 10px;
+    outline-color: chartreuse;
+
+}
+
+textarea {
+    height: 90px;
+    width: 300px;
+    border-radius: 3px;
+    border: 1px solid gray;
+    padding: 10px;
+    outline-color: chartreuse;
+}
+
+.mascara-formulario {
+    visibility: hidden;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    background: linear-gradient(109deg, rgba(10, 12, 16, 0.99) 15%, rgba(10, 12, 16, 0.7) 50%, rgba(10, 12, 16, 0.99) 85%);
+    transition: visibility 1s ease-in-out;
+
+}
+
+/* Media query 
+max -> valor menor que Npx, aplica o css do MEDIA
+min -> valor maior que Npx< aplica o css do MEDIA
+*/
+
+@media(max-width: 1100px) {
+    .encanadores {
+        display: none;
+    }
+
+    p {
+        display: none;
+    }
+
+    body {
+        flex-direction: column;
+        padding: 10px;
+        justify-content: flex-starts;
+    }
+
+    .caixa-principal {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-left: 35px;
+        margin-top: 20px;
+
+    }
+
+    form.formulario-fale-conosco {
+        width: 250px;
+        left: -235px;
+    }
+
+    textarea {
+        width: 210px;
+
+    }
+
+
+    .caixa-principal img.logo-mario {
+        margin-right: 50px;
+        margin-top: -65px;
+    }
+
+
+    .caixa-principal button {
+        margin-right: 50px;
+    }
+
+    .imagem-mario-luigi {
+        width: 70vw;
+        height: auto;
+        margin-right: -4px;
+        margin-bottom: 38px;
+
+    }
+
+    .header {
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 25px;
+    }
+
+    .header img {
+        display: flex;
+        margin-top: 113px;
+        margin-right: -80px;
+        position: static;
+    }
+
+    .header a {
+        font-size: 16px;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+    a.link-whatsapp img {
+        right: 19px;
+        bottom: 50px;
+    }
+
+    .logo-mario {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+
+
+
+}
