@@ -1,60 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Notícias | Live</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,300&display=swap" rel="stylesheet">
- 
-    <title> Mario Encanador develop </title>
-
 </head>
-
 <body>
-    <div class="mascara-formulario" onclick="esconderform()"></div>
 
+    <header class="hero">
+        <video autoplay muted loop playsinline class="video-bg">
+            <source src="seu-video.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos.
+        </video>
 
-    <div class="header">
-        <img src="./assets/icon.png" alt="icone-mario">
-        <a>Home</a>
-        <a onclick="mostrarForm()">Fale conosco</a>
-        <a href="./nossos-serviços.html">Nossos serviços</a>
-    
+        <div class="overlay"></div>
+
+        <div class="content">
+            <span class="badge">Urgente</span>
+            <h1>O Mundo em Movimento: As principais manchetes de hoje</h1>
+            <p>Acompanhe em tempo real os desdobramentos da política, economia e tecnologia.</p>
+            <button class="btn-main">Ler Reportagem</button>
         </div>
+    </header>
 
-
-    <div class="caixa-video-mario">
-        <video src="./video/video.mp4" autoplay muted loop></video>
-        <video class="mascara-video"></video>
-    </div>
-    <a href="https://api.whatsapp.com/send?phone=5562994568770&text=Ol%C3%A1,%20quero%20ajuda%20dos%20irm%C3%A3os%20Marios"
-        class="link-whatsapp">
-        <img src="./assets/whatsapp.png" alt="link para whatsapp">
-    </a>
-    <div class="caixa-principal">
-        <img src="./assets/logo.png" alt="logo do super mario" class="logo-mario">
-        <p class="encanadores">Encanadores Mario & Luigi- resolvendo seus problemas Com estilo!</p>
-        <p>Você ja se encontrou em uma situação de emergência com encanamento? Vazamentos inesperados, canos entupidos ou
-            torneiras que não param de pingar? Não se preocupe porque estamos aqui para salvar o dia! Apresentamos a
-            vocês os encanadores mais famosos do reino dos cogumelos- Mario e Luigi!</p>
-
-<button onclick="mostrarform()">Entre em contato</button>
-    </div>
-    
-    <img src="./assets/mario.png" alt="logo mario" class="imagem-mario-luigi">
-
-    <form class="formulario-fale-conosco" action="https://formcarry.com/s/jCLqwUipCEg" method="POST"
-        enctype="multipart/form-data">
-        <input placeholder="Seu nome" type="text" name="nome">
-        <input placeholder="Seu telefone" type="tel" name="telefone">
-        <textarea placeholder="Digite seu problema aqui" name="duvida"></textarea>
-        <button type="submit">PEDIR ORÇAMENTO</button>
-        
-    </form>
+    <script src="script.js"></script>
 </body>
-<script src="scripts.js"></script>
-
 </html>
