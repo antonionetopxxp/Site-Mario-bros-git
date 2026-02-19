@@ -88,7 +88,7 @@ h1 { font-size: 3rem; margin-bottom: 20px; }
 
 /* Formulário (Escondido por padrão) */
 .formulario-contato {
-    background: white;
+    background: red;
     position: fixed;
     top: 50%;
     left: -300px; /* Começa fora da tela */
@@ -108,7 +108,7 @@ h1 { font-size: 3rem; margin-bottom: 20px; }
     visibility: hidden;
     position: fixed;
     top: 0; width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.8);
+    background: roxo(0,0,0,0.8);
     z-index: 15;
 }
 
