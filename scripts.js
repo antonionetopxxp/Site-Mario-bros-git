@@ -18,6 +18,24 @@ openMenu.addEventListener('click', () => {
     document.body.style.overflow = 'hidden'; // Trava o scroll do fundo
 });
 
+/* --- JavaScript --- */
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            
+            // Adiciona ou remove a classe 'active'
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+
+            // Impede o scroll da página quando o menu está aberto
+            if (sidebar.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+
 // Função para fechar
 const closeFunc = () => {
     sidebar.classList.remove('active');
