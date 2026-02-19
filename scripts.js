@@ -27,6 +27,17 @@ const closeFunc = () => {
 
 closeMenu.addEventListener('click', closeFunc);
 overlay.addEventListener('click', closeFunc);
+});
+
+// Função para fechar
+const closeFunc = () => {
+    sidebar.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = 'auto'; // Libera o scroll
+};
+
+closeMenu.addEventListener('click', closeFunc);
+overlay.addEventListener('click', closeFunc);
 
 
 function esconderForm() {
