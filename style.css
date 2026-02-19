@@ -57,6 +57,216 @@ body {
     background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7));
     z-index: -1;
 }
+:root {
+    --primary-blue: #1a3a63; /* Azul escuro similar ao da foto */
+    --bg-white: #ffffff;
+    --overlay-color: rgba(0, 0, 0, 0.4);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+/* Estilo do Menu */
+.sidebar {
+    height: 100%;
+    width: 280px; /* Largura aproximada da foto */
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: var(--bg-white);
+    transition: transform 0.3s ease;
+    transform: translateX(-100%); /* Começa escondido */
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.sidebar.active {
+    transform: translateX(0); /* Desliza para dentro */
+}
+
+/* Cabeçalho do Menu (Botão X) */
+.sidebar-header {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 35px;
+    color: #888;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+/* Itens de Navegação */
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav ul li {
+    border-bottom: 1px solid #f0f0f0; /* Linha sutil opcional */
+}
+
+.sidebar-nav ul li a {
+    display: block;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: var(--primary-blue);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Layout do item com seta (Categorias) */
+.has-submenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.arrow {
+    color: var(--primary-blue);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Overlay de fundo */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--overlay-color);
+    z-index: 999;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Botão de abrir (estilo básico) */
+.open-btn {
+    font-size: 25px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 15px;
+}
+:root {
+    --primary-blue: #1a3a63; /* Azul escuro similar ao da foto */
+    --bg-white: #ffffff;
+    --overlay-color: rgba(0, 0, 0, 0.4);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+/* Estilo do Menu */
+.sidebar {
+    height: 100%;
+    width: 280px; /* Largura aproximada da foto */
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: var(--bg-white);
+    transition: transform 0.3s ease;
+    transform: translateX(-100%); /* Começa escondido */
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.sidebar.active {
+    transform: translateX(0); /* Desliza para dentro */
+}
+
+/* Cabeçalho do Menu (Botão X) */
+.sidebar-header {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 35px;
+    color: #888;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+/* Itens de Navegação */
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav ul li {
+    border-bottom: 1px solid #f0f0f0; /* Linha sutil opcional */
+}
+
+.sidebar-nav ul li a {
+    display: block;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: var(--primary-blue);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Layout do item com seta (Categorias) */
+.has-submenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.arrow {
+    color: var(--primary-blue);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Overlay de fundo */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--overlay-color);
+    z-index: 999;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Botão de abrir (estilo básico) */
+.open-btn {
+    font-size: 25px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 15px;
+}
+
+
 
 /* Conteúdo Principal */
 .caixa-principal {
