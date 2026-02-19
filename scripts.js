@@ -1,18 +1,12 @@
-const form = document.querySelector(".formulario-fale-conosco")
+const formulario = document.querySelector(".formulario-contato")
 const mascara = document.querySelector(".mascara-formulario")
 
-
-
-
-function mostrarform(){
-    form.style.left = "50%"
-    form.style.transform = "translateX(-50%)"
+function mostrarForm() {
+    formulario.style.left = "50%"
     mascara.style.visibility = "visible"
 }
 
-function esconderform(){
-    form.style.left = "-330px"
-    form.style.transform = "translateX(0)"
+function esconderForm() {
+    formulario.style.left = "-300px"
     mascara.style.visibility = "hidden"
 }
-
