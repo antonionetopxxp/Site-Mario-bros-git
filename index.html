@@ -191,34 +191,3 @@
     });
 </script>
 
-</body>
-</html>
-            padding: 10px;
-            text-align: center;
-            border-bottom: 2px solid #ddd;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav a { margin: 0 15px; text-decoration: none; color: var(--glb-text-color); font-weight: bold; font-size: 14px; }
-
-        .container {
-            max-width: 1100px;
-            margin: 20px auto;
-            display: grid;
-<script>
-    // Lógica do Contador
-    const countDisplay = document.getElementById('count-number');
-    let clicks = localStorage.getItem('total_clicks') || 0;
-    countDisplay.innerText = clicks;
-
-    window.addEventListener('click', () => {
-        clicks++;
-        countDisplay.innerText = clicks;
-        localStorage.setItem('total_clicks', clicks);
-    });
-</script>
-
-
-    
