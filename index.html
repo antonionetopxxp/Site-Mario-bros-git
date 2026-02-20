@@ -1,88 +1,206 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <title>Portal Sulgoias.sul | Notícias em Tempo Real</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sul Goiás Sul - O seu portal de notícias</title>
+    
+    <style>
+        /* Variáveis de Cor baseadas no seu exemplo técnico */
+        :root {
+            --glb-primary-color: #c4170c; /* Vermelho padrão de notícias */
+            --glb-secondary-color: #a6130a;
+            --glb-background-color: #f6f6f6;
+            --glb-card-bg: #ffffff;
+            --glb-title-color: #111111;
+            --glb-text-color: #333333;
+            --spacing-large: 40px;
+            --spacing-medium: 20px;
+        }
+
+        body {
+            font-family: "Open Sans", Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--glb-background-color);
+            color: var(--glb-text-color);
+            line-height: 1.5;
+        }
+
+        /* Barra de Topo */
+        .header-container {
+            background-color: #ffffff;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--glb-primary-color);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-menu a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #666;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        /* Layout de Notícias */
+        .main-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            padding: 0 15px;
+        }
+
+        /* Card de Notícia */
+        .news-card {
+            background: var(--glb-card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            transition: transform 0.2s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 350px;
+            background-color: #ddd;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-category {
+            color: var(--glb-primary-color);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        .news-title {
+            font-size: 32px;
+            margin: 10px 0;
+            color: var(--glb-title-color);
+            line-height: 1.1;
+        }
+
+        .news-summary {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Barra Lateral */
+        .sidebar-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 4px solid var(--glb-primary-color);
+        }
+
+        .sidebar-title {
+            font-size: 18px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Responsividade para Celulares */
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            .news-title {
+                font-size: 24px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="mascara-formulario" onclick="esconderForm()"></div>
 
-    <header class="header">
-        <img src="./assets/icon sulgoias - Copia.png" alt="Logo icon sulgoias - Copia" class="logo-header">
-        
-        <nav>
-            <a href="#">Início</a>
-            <a href="#">Goiás</a>
-            <a href="#">Economia</a><a href="https://g1.com.br/economia" class="aba-link">Economia</a>
-            <a onclick="mostrarForm()">Anuncie Aqui</a>
+<div class="header-container">
+    <header class="header-content">
+        <a href="/" class="logo">Sul Goiás. sul</a>
+        <nav class="nav-menu">
+            <a href="#">Itumbiara</a>
+            <a href="#">Rio Verde</a>
+            <a href="#">Jataí</a>
+            <a href="#">Agro</a>
         </nav>
-<button id="openMenu" class="open-btn">☰</button>
-
-<div id="sidebar" class="sidebar">
-    <div class="sidebar-header">
-        <button id="closeMenu" class="close-btn">&times;</button>
-    </div>
-    
-    <nav class="sidebar-nav">
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Últimas</a></li>
-            <li><a href="#">Em alta</a></li>
-            <li class="has-submenu">
-                <a href="#">Categorias</a>
-                <span class="arrow">›</span>
-            </li>
-            <li><a href="#">Destaques</a></li>
-            <li><a href="#">Luiz Bacci</a></li>
-        </ul>
-    </nav>
+    </header>
 </div>
 
-<div id="overlay" class="overlay"></div>
+<div class="main-container">
+    <main>
+        <article class="news-card">
+            <img src="https://via.placeholder.com/800x400" alt="Notícia Principal" class="news-image">
+            <div class="news-content">
+                <span class="news-category">Economia Regional</span>
+                <h2 class="news-title">Colheita recorde no Sul de Goiás impulsiona PIB do estado em 2026</h2>
+                <p class="news-summary">Dados recentes mostram que a região sul lidera a produtividade de grãos, trazendo novos investimentos para a infraestrutura local.</p>
+            </div>
+        </article>
 
-        
-    </header>
+        <article class="news-card">
+            <div class="news-content">
+                <span class="news-category">Cidades</span>
+                <h2 class="news-title" style="font-size: 22px;">Novas obras na BR-153 prometem desafogar tráfego pesado</h2>
+                <p class="news-summary">As intervenções começam na próxima segunda-feira e visam aumentar a segurança dos motoristas.</p>
+            </div>
+        </article>
+    </main>
 
-    <div class="caixa-video-background">
-        <video src="./video/news-background.mp4" autoplay muted loop playsinline></video>
-        <div class="mascara-video"></div>
-    </div>
+    <aside>
+        <div class="sidebar-box">
+            <h3 class="sidebar-title">MAIS LIDAS</h3>
+            <ol style="padding-left: 20px; color: var(--glb-primary-color); font-weight: bold;">
+                <li style="margin-bottom: 15px;"><a href="#" style="color: #333; text-decoration: none;">Concurso público abre 500 vagas na região sul.</a></li>
+                <li style="margin-bottom: 15px;"><a href="#" style="color: #333; text-decoration: none;">Previsão do tempo: Frente fria chega a Goiás.</a></li>
+                <li style="margin-bottom: 15px;"><a href="#" style="color: #333; text-decoration: none;">Exposição agropecuária confirma shows nacionais.</a></li>
+            </ol>
+        </div>
+    </aside>
+</div>
 
-    <a href="https://api.whatsapp.com/send?phone=5561994568770&text=Olá, tenho uma sugestão de pauta para o Sulgoias." class="link-whatsapp" target="_blank">
-        <img src="./assets/whatsapp.png" alt="WhatsApp">
-    </a>
+<footer>
+    <p><strong>Sul Goiás Sul Notícias</strong></p>
+    <p>Hospedado em: sulgoiassul.netlify.app</p>
+    <p style="font-size: 12px; opacity: 0.6;">&copy; 2026 - Todos os direitos reservados.</p>
+</footer>
 
-    <main class="caixa-principal">
-    <span class="tag-urgente">🚨 Plantão 24h</span>
-    
-    <h1>Sulgoias.sul: A informação que move a nossa região</h1>
-    
-    <p class="descricao-noticia">
-        Acompanhe os principais fatos, política, agronegócio e tudo o que acontece no 
-        <strong>sul de Goiás</strong> com credibilidade e rapidez.
-    </p>
-    
-    <button class="btn-primario" onclick="window.location.href='https://g1.globo.com'">
-    Ver Últimas Notícias
-</button>
-        <button class="btn-secundario" onclick="mostrarForm()">
-            Enviar Sugestão de Pauta
-        </button>
-    </div>
-</main>
-
-    < form  class = "formulario-contato"  action = "https://formcarry.com/s/SEU_ID"  method = "POST" >
-        < h2 > Fale com a Redação </ h2 >
-        < input  placeholder = "Seu nome completo"  type = "text"  name = "nome"  required >
-        < input  placeholder = "E-mail ou Telefone"  type = "text"  name = "contato"  required >
-        < textarea  placeholder = "Sua mensagem ou denúncia..."  name = "mensagem" > </ textarea >
-        < button  type = " submit" > ENVIAR AGORA </button>
-    </ formulário >
-
-    < script  src = " scripts.js " > </script>
-</body>​​
-</ html >
+</body>
+</html>
