@@ -1,70 +1,66 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE HTML>
+<html lang="pt-BR" class="glb-theme-ux2023 glb-layout-ux2023">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sul Goiás Sul - O seu portal de notícias</title>
+    <title>Sul Goiás Sul - Notícias da Região</title>
     
     <style>
-        /* Variáveis de Cor baseadas no seu exemplo técnico */
+        /* Variáveis baseadas no seu código original */
         :root {
-            --glb-primary-color: #c4170c; /* Vermelho padrão de notícias */
+            --glb-primary-color: #c4170c;
             --glb-secondary-color: #a6130a;
-            --glb-background-color: #f6f6f6;
+            --glb-background-color: #f4f4f4;
             --glb-card-bg: #ffffff;
-            --glb-title-color: #111111;
-            --glb-text-color: #333333;
+            --glb-title-color: #111;
+            --glb-text-color: #333;
             --spacing-large: 40px;
-            --spacing-medium: 20px;
         }
 
         body {
-            font-family: "Open Sans", Helvetica, Arial, sans-serif;
+            font-family: 'Open Sans', Arial, sans-serif;
             margin: 0;
-            padding: 0;
             background-color: var(--glb-background-color);
             color: var(--glb-text-color);
-            line-height: 1.5;
         }
 
-        /* Barra de Topo */
-        .header-container {
-            background-color: #ffffff;
-            border-bottom: 1px solid #ddd;
+        /* Cabeçalho */
+        header {
+            background-color: var(--glb-primary-color);
+            padding: 20px 0;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-text {
+            font-size: 32px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        nav {
+            background: white;
+            padding: 10px;
+            text-align: center;
+            border-bottom: 2px solid #ddd;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--glb-primary-color);
+        nav a {
+            margin: 0 15px;
             text-decoration: none;
-            letter-spacing: -1px;
-        }
-
-        .nav-menu a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #666;
+            color: var(--glb-text-color);
             font-weight: bold;
             font-size: 14px;
-            text-transform: uppercase;
         }
 
-        /* Layout de Notícias */
-        .main-container {
-            max-width: 1200px;
+        /* Container Principal */
+        .container {
+            max-width: 1100px;
             margin: 20px auto;
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -72,134 +68,146 @@
             padding: 0 15px;
         }
 
-        /* Card de Notícia */
-        .news-card {
+        /* Seção de Notícias */
+        .main-content {
             background: var(--glb-card-bg);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-            transition: transform 0.2s;
-        }
-
-        .news-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .news-image {
-            width: 100%;
-            height: 350px;
-            background-color: #ddd;
-            object-fit: cover;
-        }
-
-        .news-content {
-            padding: 20px;
-        }
-
-        .news-category {
-            color: var(--glb-primary-color);
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 12px;
-        }
-
-        .news-title {
-            font-size: 32px;
-            margin: 10px 0;
-            color: var(--glb-title-color);
-            line-height: 1.1;
-        }
-
-        .news-summary {
-            font-size: 16px;
-            color: #555;
-        }
-
-        /* Barra Lateral */
-        .sidebar-box {
-            background: white;
             padding: 20px;
             border-radius: 8px;
-            border-top: 4px solid var(--glb-primary-color);
         }
 
-        .sidebar-title {
-            font-size: 18px;
+        .card-noticia {
+            margin-bottom: 30px;
             border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
+            padding-bottom: 20px;
+        }
+
+        .card-noticia h2 {
+            font-size: 28px;
+            color: var(--glb-title-color);
+            margin-top: 10px;
+        }
+
+        /* Galeria de Fotos */
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .galeria img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .galeria img:hover {
+            opacity: 0.7;
+        }
+
+        /* Formulário de Contato */
+        .contato-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 5px solid var(--glb-primary-color);
+        }
+
+        .contato-form input, .contato-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .btn-enviar {
+            background: var(--glb-primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
         }
 
         footer {
-            background: #333;
+            background: #222;
             color: white;
-            padding: 40px 20px;
             text-align: center;
+            padding: 30px;
             margin-top: 50px;
         }
 
-        /* Responsividade para Celulares */
+        /* Responsividade */
         @media (max-width: 768px) {
-            .main-container {
-                grid-template-columns: 1fr;
-            }
-            .news-title {
-                font-size: 24px;
-            }
+            .container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<div class="header-container">
-    <header class="header-content">
-        <a href="/" class="logo">Sul Goiás. sul</a>
-        <nav class="nav-menu">
-            <a href="#">Itumbiara</a>
-            <a href="#">Rio Verde</a>
-            <a href="#">Jataí</a>
-            <a href="#">Agro</a>
-        </nav>
-    </header>
-</div>
+<header>
+    <div class="logo-text">Sul Goiás. sul</div>
+    <div style="font-size: 14px;">sulgoiassul.netlify.app</div>
+</header>
 
-<div class="main-container">
-    <main>
-        <article class="news-card">
-            <img src="https://via.placeholder.com/800x400" alt="Notícia Principal" class="news-image">
-            <div class="news-content">
-                <span class="news-category">Economia Regional</span>
-                <h2 class="news-title">Colheita recorde no Sul de Goiás impulsiona PIB do estado em 2026</h2>
-                <p class="news-summary">Dados recentes mostram que a região sul lidera a produtividade de grãos, trazendo novos investimentos para a infraestrutura local.</p>
-            </div>
-        </article>
+<nav>
+    <a href="#">HOME</a>
+    <a href="#noticias">NOTÍCIAS</a>
+    <a href="#fotos">GALERIA</a>
+    <a href="#contato">CONTATO</a>
+</nav>
 
-        <article class="news-card">
-            <div class="news-content">
-                <span class="news-category">Cidades</span>
-                <h2 class="news-title" style="font-size: 22px;">Novas obras na BR-153 prometem desafogar tráfego pesado</h2>
-                <p class="news-summary">As intervenções começam na próxima segunda-feira e visam aumentar a segurança dos motoristas.</p>
+<div class="container">
+    <main class="main-content">
+        <section id="noticias">
+            <div class="card-noticia">
+                <span style="color: var(--glb-primary-color); font-weight: bold;">AGRONEGÓCIO</span>
+                <h2>Exportações no Sul de Goiás crescem 15% no primeiro bimestre</h2>
+                <p>A região consolida sua posição como motor econômico do estado, liderada pela produção de soja e milho.</p>
+                <small>Há 2 horas • Por Redação</small>
             </div>
-        </article>
+        </section>
+
+        <section id="fotos">
+            <h3 style="border-bottom: 2px solid var(--glb-primary-color); padding-bottom: 5px;">GALERIA DA SEMANA</h3>
+            <div class="galeria">
+                <img src="https://picsum.photos/300/201" alt="Foto 1">
+                <img src="https://picsum.photos/300/202" alt="Foto 2">
+                <img src="https://picsum.photos/300/203" alt="Foto 3">
+                <img src="https://picsum.photos/300/204" alt="Foto 4">
+            </div>
+        </section>
     </main>
 
     <aside>
-        <div class="sidebar-box">
-            <h3 class="sidebar-title">MAIS LIDAS</h3>
-            <ol style="padding-left: 20px; color: var(--glb-primary-color); font-weight: bold;">
-                <li style="margin-bottom: 15px;"><a href="#" style="color: #333; text-decoration: none;">Concurso público abre 500 vagas na região sul.</a></li>
-                <li style="margin-bottom: 15px;"><a href="#" style="color: #333; text-decoration: none;">Previsão do tempo: Frente fria chega a Goiás.</a></li>
-                <li style="margin-bottom: 15px;"><a href="#" style="color: #333; text-decoration: none;">Exposição agropecuária confirma shows nacionais.</a></li>
-            </ol>
+        <div class="contato-form" id="contato">
+            <h3>Fale Conosco</h3>
+            <p style="font-size: 13px;">Envie sua sugestão de pauta para o Sul Goiás Sul.</p>
+            <form action="#">
+                <input type="text" placeholder="Seu Nome" required>
+                <input type="email" placeholder="Seu E-mail" required>
+                <textarea rows="4" placeholder="Sua mensagem ou denúncia" required></textarea>
+                <button type="submit" class="btn-enviar">ENVIAR AGORA</button>
+            </form>
+        </div>
+
+        <div style="margin-top: 20px; background: white; padding: 15px; border-radius: 8px;">
+            <h4>Tempo em Itumbiara</h4>
+            <p>☀️ 31°C</p>
         </div>
     </aside>
 </div>
 
 <footer>
-    <p><strong>Sul Goiás Sul Notícias</strong></p>
-    <p>Hospedado em: sulgoiassul.netlify.app</p>
-    <p style="font-size: 12px; opacity: 0.6;">&copy; 2026 - Todos os direitos reservados.</p>
+    <p><strong>Sul Goiás Sul</strong> - O portal de notícias oficial do sul goiano.</p>
+    <p style="font-size: 12px; opacity: 0.7;">Hospedado em: sulgoiassul.netlify.app</p>
 </footer>
 
 </body>
