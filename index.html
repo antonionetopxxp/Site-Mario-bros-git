@@ -6,7 +6,6 @@
     <title>Sul Goiás Sul - Notícias da Região</title>
     
     <style>
-        /* Variáveis baseadas no seu código original */
         :root {
             --glb-primary-color: #c4170c;
             --glb-secondary-color: #a6130a;
@@ -14,7 +13,6 @@
             --glb-card-bg: #ffffff;
             --glb-title-color: #111;
             --glb-text-color: #333;
-            --spacing-large: 40px;
         }
 
         body {
@@ -24,7 +22,6 @@
             color: var(--glb-text-color);
         }
 
-        /* Cabeçalho */
         header {
             background-color: var(--glb-primary-color);
             padding: 20px 0;
@@ -33,7 +30,153 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .logo-text {
+        .logo-text { font-size: 32px; font-weight: 800; text-transform: uppercase; }
+
+        nav {
+            background: white;
+            padding: 10px;
+            text-align: center;
+            border-bottom: 2px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a { margin: 0 15px; text-decoration: none; color: var(--glb-text-color); font-weight: bold; }
+
+        .container {
+            max-width: 1100px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            padding: 0 15px;
+        }
+
+        .main-content { background: var(--glb-card-bg); padding: 20px; border-radius: 8px; }
+
+        .card-noticia { margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+
+        .galeria { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+        .galeria img { width: 100%; height: 120px; object-fit: cover; border-radius: 4px; }
+
+        .contato-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 5px solid var(--glb-primary-color);
+        }
+
+        .contato-form input, .contato-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .btn-enviar {
+            background: var(--glb-primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        /* Estilo do Contador de Cliques */
+        #click-counter {
+            position: fixed;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            z-index: 2000;
+        }
+
+        footer { background: #222; color: white; text-align: center; padding: 30px; margin-top: 50px; }
+
+        @media (max-width: 768px) { .container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div id="click-counter">Cliques: <span id="count">0</span></div>
+
+<header>
+    <div class="logo-text">Sul Goiás. Sul</div>
+    <div style="font-size: 14px;">sulgoiassul.netlify.app</div>
+</header>
+
+<nav>
+    <a href="#">HOME</a>
+    <a href="#noticias">NOTÍCIAS</a>
+    <a href="#fotos">GALERIA</a>
+    <a href="#contato">CONTATO</a>
+</nav>
+
+<div class="container">
+    <main class="main-content">
+        <section id="noticias">
+            <div class="card-noticia">
+                <span style="color: var(--glb-primary-color); font-weight: bold;">AGRONEGÓCIO</span>
+                <h2>Exportações no Sul de Goiás crescem 15% no primeiro bimestre</h2>
+                <p>A região consolida sua posição como motor econômico do estado.</p>
+            </div>
+        </section>
+
+        <section id="fotos">
+            <h3>GALERIA DA SEMANA</h3>
+            <div class="galeria">
+                <img src="https://picsum.photos/300/201" alt="Foto 1">
+                <img src="https://picsum.photos/300/202" alt="Foto 2">
+            </div>
+        </section>
+    </main>
+
+    <aside>
+        <div class="contato-form" id="contato">
+            <h3>Fale Conosco</h3>
+            <p style="font-size: 13px;">Envie sua sugestão de pauta.</p>
+            
+            <form action="https://formspree.io/f/antonionetopxxp@gmail.com" method="POST">
+                <input type="text" name="nome" placeholder="Seu Nome" required>
+                <input type="email" name="email" placeholder="Seu E-mail" required>
+                <textarea name="mensagem" rows="4" placeholder="Sua mensagem ou denúncia" required></textarea>
+                
+                <input type="hidden" name="_subject" value="Nova mensagem do Portal Sul Goiás">
+                
+                <button type="submit" class="btn-enviar">ENVIAR AGORA</button>
+            </form>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <p><strong>Sul Goiás Sul</strong> - 2024</p>
+</footer>
+
+<script>
+    // Lógica do Contador de Cliques
+    let count = localStorage.getItem('clickCount') || 0;
+    const display = document.getElementById('count');
+    display.innerText = count;
+
+    window.addEventListener('click', () => {
+        count++;
+        display.innerText = count;
+        localStorage.setItem('clickCount', count);
+    });
+</script>
+
+</body>
+</html>
             font-size: 32px;
             font-weight: 800;
             text-transform: uppercase;
