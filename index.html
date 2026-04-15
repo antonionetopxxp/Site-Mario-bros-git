@@ -3,19 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Notícias e eventos do Sul Goiás">
     <title>Sul Goiás Sul</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-<!-- Adicionar no head do HTML -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-</script>
-
 </head>
 <body>
     <header>
@@ -30,12 +20,16 @@
     <main>
         <section id="noticias">
             <h2>Últimas Notícias</h2>
-            <div id="carregando">Carregando notícias...</div>
+            <div class="noticias-grid" id="noticias-container">
+                <!-- Conteúdo será preenchido pelo JavaScript -->
+            </div>
         </section>
         
         <section id="eventos">
             <h2>Próximos Eventos</h2>
-            <div id="eventos-container"></div>
+            <div class="eventos-grid" id="eventos-container">
+                <!-- Conteúdo será preenchido pelo JavaScript -->
+            </div>
         </section>
         
         <section id="contato">
@@ -53,74 +47,6 @@
         <p>&copy; 2023 Sul Goiás Sul. Todos os direitos reservados.</p>
     </footer>
     
-    
+    <script src="script.js"></script>
 </body>
-</html>             
-    </style>
-</head>
-<body>
-    
-<header>
-    <div class="logo-text">Sul Goiás. Sul</div>
-    <div style="font-size: 14px;">sulgoiassul.netlify.app</div>
-</header>
-
-<nav>
-    <a href="#">HOME</a>
-    <a href="#noticias">NOTÍCIAS</a>
-    <a href="#fotos">GALERIA</a>
-    <a href="#contato">CONTATO</a>
-</nav>
-
-<div class="container">
-    <main class="main-content">
-        <section id="noticias">
-            <div class="card-noticia">
-                <span style="color: var(--glb-primary-color); font-weight: bold;">AGRONEGÓCIO</span>
-                <h2>Exportações no Sul de Goiás crescem 15% no primeiro bimestre</h2>
-                <p>A região consolida sua posição como motor econômico do estado, liderada pela produção de soja e milho.</p>
-                <small>Há 2 horas • Por Redação</small>
-            </div>
-        </section>
-
-        <section id="fotos">
-            <h3 style="border-bottom: 2px solid var(--glb-primary-color); padding-bottom: 5px;">GALERIA DA SEMANA</h3>
-            <div class="galeria">
-                <img src="https://picsum.photos/300/201" alt="Foto 1">
-                <img src="https://picsum.photos/300/202" alt="Foto 2">
-                <img src="https://picsum.photos/300/203" alt="Foto 3">
-                <img src="https://picsum.photos/300/204" alt="Foto 4">
-            </div>
-        </section>
-    </main>
-
-    <aside>
-        <div class="contato-form" id="contato">
-            <h3>Fale Conosco</h3>
-            <p style="font-size: 13px;">Envie sua sugestão de pauta para o Sul Goiás Sul.</p>
-            
-            <form action="https://formcarry.com/s/jCLqwUipCEg" method="POST" accept-charset="UTF-8">
-                <input type="text" name="Nome do Cliente" placeholder="Seu Nome" required>
-                <input type="email" name="Email de Contato" placeholder="Seu E-mail" required>
-                <textarea name="Mensagem ou Denuncia" rows="4" placeholder="Sua mensagem ou denúncia" required></textarea>
-                
-                <input type="hidden" name="_next" value="https://sulgoiassul.netlify.app">
-                
-                <input type="hidden" name="_gotcha"> 
-                
-                <button type="submit" class="btn-enviar">ENVIAR AGORA</button>
-            </form>
-        </div>
-
-        <div style="margin-top: 20px; background: white; padding: 15px; border-radius: 8px;">
-            <h4>Tempo em Itumbiara</h4>
-            <p>☀️ 31°C</p>
-        </div>
-    </aside>
-</div>
-
-<footer>
-    <p><strong>Sul Goiás Sul</strong> - O portal de notícias oficial do sul goiano.</p>
-    <p style="font-size: 12px; opacity: 0.7;">Hospedado em: sulgoiassul.netlify.app</p>
-</footer>
-
+</html>
