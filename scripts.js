@@ -1,3 +1,113 @@
+
+
+// webpack.config.js
+const path = require('path');
+
+module.exports = {
+    mode: 'development',
+    entry: './src/index.js',
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist')
+    },
+    devServer: {
+        static: './dist',
+        hot: true,
+        port: 3000
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource'
+            }
+        ]
+    },
+    plugins: [
+        // Plugins adicionais
+    ]
+};
+
+
+
+
+
+
+// mocha-tests.js - Testes com Mocha
+describe('Funcionalidades do Site', function() {
+    describe('Carregamento de Notícias', function() {
+        it('deve carregar notícias da API', async function() {
+            this.timeout(5000);
+            
+            const container = document.getElementById('carregando');
+            await carregarNoticiasAPI();
+            
+            expect(container.innerHTML).to.include('<article');
+        });
+        
+        it('deve mostrar mensagem de erro em caso de falha', async function() {
+            this.timeout(5000);
+            
+            const container = document.getElementById('carregando');
+            await carregarNoticiasAPI();
+            
+            expect(container.innerHTML).to.include('Erro ao carregar notícias');
+        });
+    });
+    
+    describe('Carregamento de Eventos', function() {
+        it('deve carregar eventos da API', async function() {
+            this.timeout(5000);
+            
+            const container = document.getElementById('eventos-container');
+            await carregarEventosAPI();
+            
+            expect(container.innerHTML).to.include('<div class="evento">');
+        });
+    });
+    
+    describe('Envio de Contato', function() {
+        it('deve enviar formulário de contato', async function() {
+            this.timeout(5000);
+            
+            const form = document.getElementById('formulario-contato');
+            const originalSubmit = form.addEventListener;
+            
+            let submitCalled = false;
+            form.addEventListener = function(event, callback) {
+                if (event === 'submit') {
+                    submitCalled = true;
+                    return originalSubmit.call(this, event, callback);
+                }
+                return originalSubmit.apply(this, arguments);
+            };
+            
+            const event = new Event('submit', { cancelable: true });
+            form.dispatchEvent(event);
+            
+            setTimeout(() => {
+                expect(submitCalled).to.be.true;
+                form.addEventListener = originalSubmit;
+            }, 100);
+        });
+    });
+});
+
+
 // tests.js - Testes automatizados
 function testCarregarNoticias() {
     const container = document.getElementById('carregando');
