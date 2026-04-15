@@ -1,0 +1,13 @@
+name: Deploy Site
+on:
+  push:
+    branches: [ main ]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm ci && npm run build
+      - uses: netlify/actions/cli@main
+        with:
+          args: deploy --prod
