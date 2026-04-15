@@ -87,3 +87,33 @@ async function enviarContato() {
         alert('Erro ao enviar mensagem. Tente novamente.');
     }
 }
+// news.js - Dados reais de notícias
+const noticias = [
+    {
+        id: 1,
+        titulo: "Conferência de Tecnologia Sul Goiás",
+        imagem: "imagens/conferencia.jpg",
+        resumo: "O maior evento tecnológico da região acontecerá em julho.",
+        data: "20/06/2023",
+        link: "noticia1.html"
+    },
+    {
+        id: 2,
+        titulo: "Inauguração do Parque Cultural",
+        imagem: "imagens/parque.jpg",
+        resumo: "Parque cultural será inaugurado com shows e exposições.",
+        data: "18/06/2023",
+        link: "noticia2.html"
+    },
+    {
+        id: 3,
+        titulo: "Campeonato Municipal de Futebol",
+        imagem: "imagens/futebol.jpg",
+        resumo: "Campeonato municipal começa na próxima semana.",
+        data: "15/06/2023",
+        link: "noticia3.html"
+    }
+];
+
+// Exportar para uso em outros módulos
+export default noticias;
