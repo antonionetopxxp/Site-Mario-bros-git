@@ -1,3 +1,36 @@
+// events.js - Dados reais de eventos
+const eventos = [
+    {
+        id: 1,
+        nome: "Festival de Música Regional",
+        data: "25/06/2023",
+        hora: "19:00",
+        local: "Praça Central",
+        preco: "Gratuíto"
+    },
+    {
+        id: 2,
+        nome: "Feira de Artesanato",
+        data: "28/06/2023",
+        hora: "10:00",
+        local: "Centro Comercial",
+        preco: "Gratuíto"
+    },
+    {
+        id: 3,
+        nome: "Workshop de Programação",
+        data: "01/07/2023",
+        hora: "14:00",
+        local: "Faculdade",
+        preco: "R$ 50"
+    }
+];
+
+// Exportar para uso em outros módulos
+export default eventos;
+
+
+
 // script.js - Versão com API real
 document.addEventListener('DOMContentLoaded', function() {
     // Carregamento de notícias
