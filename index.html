@@ -9,64 +9,52 @@
 </head>
 <body>
     <header>
-		
-
-	            
-      <nav>
-            <a href="#noticias">Notícias</a>
-            <a href="#eventos">Eventos</a>
-            <a href="#contato">Contato</a>
-        </nav>
+        <div class="container">
+            <h1>Notícias Sul Goiás</h1>
+            <nav>
+                <a href="#noticias">Notícias</a>
+                <a href="#eventos">Eventos</a>
+                <a href="#contato">Contato</a>
+            </nav>
+        </div>
     </header>
-    <div class="post-thumbnail">
-
-<img width="659" height="545" src="https://jornalgoiania.com.br/wp-content/uploads/2026/03/GARCIA-E-BIBI.jpeg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" fetchpriority="high" srcset="https://jornalgoiania.com.br/wp-content/uploads/2026/03/GARCIA-E-BIBI.jpeg 659w, https://jornalgoiania.com.br/wp-content/uploads/2026/03/GARCIA-E-BIBI-300x248.jpeg 300w" sizes="(max-width: 659px) 100vw, 659px">		<h1 class="entry-title entry-title-large">
-
-	            GRUPO HADASSA VIAGENS VIRA REFERÊNCIA MUNDIAL, ATINGE 1.2 MILHÃO DE EMBARQUES, 635.000 CLIENTES CADASTRADOS E IMPLANTA BANCO DIGITAL COM MAIS DE 300 SERVIÇOS
-	        </h1>
-		</div>
+    
     <main>
-        <section id="noticias">
+        <section id="noticias" class="container">
             <h2>Últimas Notícias</h2>
             <div class="noticias-grid" id="noticias-container">
                 <!-- Conteúdo será preenchido pelo JavaScript -->
             </div>
-      
-        <!-- Exemplo de notícia atualizada -->
-<article class="noticia">
-    <img src="imagens/noticia1.jpg" alt="Notícia 1">
-    <h3>Corinthians vence Palmeiras no Alianza</h3>
-    <p>Data: 15/06/2023</p>
-    <p>Resumo da notícia...</p>
-    <a href="#">Leia mais</a>
-</article>
-        
-        
-        
-        
-        
         </section>
         
-        <section id="eventos">
+        <section id="eventos" class="container">
             <h2>Próximos Eventos</h2>
             <div class="eventos-grid" id="eventos-container">
                 <!-- Conteúdo será preenchido pelo JavaScript -->
             </div>
         </section>
         
-        <section id="contato">
+        <section id="contato" class="container">
             <h2>Entre em Contato</h2>
             <form id="formulario-contato">
-                <input type="text" placeholder="Nome" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Mensagem" required></textarea>
+                <div class="form-group">
+                    <input type="text" placeholder="Nome" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Mensagem" required></textarea>
+                </div>
                 <button type="submit">Enviar</button>
             </form>
         </section>
     </main>
     
     <footer>
-        <p>&copy; 2023 Sul Goiás Sul. Todos os direitos reservados.</p>
+        <div class="container">
+            <p>&copy; 2023 Sul Goiás Sul. Todos os direitos reservados.</p>
+        </div>
     </footer>
     
     <script src="script.js"></script>
