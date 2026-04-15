@@ -147,6 +147,35 @@ const noticias = [
         link: "noticia3.html"
     }
 ];
+// analytics.js - Funções de rastreamento
+function rastrearPagina(nomePagina) {
+    gtag('config', 'G-XXXXXXXXXX', {
+        page_title: nomePagina,
+        page_location: window.location.href
+    });
+}
+
+function rastrearClique(elemento, categoria) {
+    gtag('event', 'click', {
+        event_category: categoria,
+        event_label: elemento.textContent
+    });
+}
+
+function rastrearFormulario(form, acao) {
+    gtag('event', 'submit', {
+        event_category: 'form',
+        event_label: acao
+    });
+}
+
+// Exemplo de uso
+document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        rastrearClique(link, 'links');
+    });
+});
+
 
 // Exportar para uso em outros módulos
 export default noticias;
