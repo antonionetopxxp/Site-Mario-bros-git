@@ -1,39 +1,23 @@
-// script.js
+// script.js - Versão com API real
 document.addEventListener('DOMContentLoaded', function() {
     // Carregamento de notícias
-    carregarNoticias();
+    carregarNoticiasAPI();
     
     // Carregamento de eventos
-    carregarEventos();
+    carregarEventosAPI();
     
     // Formulário de contato
     const form = document.getElementById('formulario-contato');
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        alert('Mensagem enviada com sucesso!');
-        form.reset();
+        enviarContato();
     });
 });
 
-async function carregarNoticias() {
+async function carregarNoticiasAPI() {
     try {
-        // Mock de dados (substituir por API real)
-        const noticias = [
-            {
-                id: 1,
-                titulo: "Notícia 1",
-                imagem: "imagens/noticia1.jpg",
-                resumo: "Resumo da notícia 1...",
-                data: "15/06/2023"
-            },
-            {
-                id: 2,
-                titulo: "Notícia 2",
-                imagem: "imagens/noticia2.jpg",
-                resumo: "Resumo da notícia 2...",
-                data: "14/06/2023"
-            }
-        ];
+        const response = await fetch('https://api.sulgoiassul.com/noticias');
+        const noticias = await response.json();
         
         const container = document.getElementById('carregando');
         container.innerHTML = '';
@@ -46,37 +30,21 @@ async function carregarNoticias() {
                 <h3>${noticia.titulo}</h3>
                 <p>${noticia.data}</p>
                 <p>${noticia.resumo}</p>
-                <a href="#" onclick="verNoticia(${noticia.id})">Leia mais</a>
+                <a href="${noticia.link}">Leia mais</a>
             `;
             container.appendChild(card);
         });
     } catch (error) {
         console.error('Erro ao carregar notícias:', error);
+        document.getElementById('carregando').innerHTML = 
+            '<p>Erro ao carregar notícias. Tente novamente mais tarde.</p>';
     }
 }
 
-function verNoticia(id) {
-    // Exemplo de navegação para detalhes
-    window.location.href = `detalhes.html?id=${id}`;
-}
-
-async function carregarEventos() {
+async function carregarEventosAPI() {
     try {
-        // Mock de eventos (substituir por API real)
-        const eventos = [
-            {
-                id: 1,
-                nome: "Evento 1",
-                data: "20/06/2023",
-                local: "Local 1"
-            },
-            {
-                id: 2,
-                nome: "Evento 2",
-                data: "22/06/2023",
-                local: "Local 2"
-            }
-        ];
+        const response = await fetch('https://api.sulgoiassul.com/eventos');
+        const eventos = await response.json();
         
         const container = document.getElementById('eventos-container');
         
@@ -92,25 +60,30 @@ async function carregarEventos() {
         });
     } catch (error) {
         console.error('Erro ao carregar eventos:', error);
+        document.getElementById('eventos-container').innerHTML = 
+            '<p>Erro ao carregar eventos. Tente novamente mais tarde.</p>';
     }
 }
 
-// Função para carregar imagens de forma lazy
-function carregarImagensLazy() {
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                observer.unobserve(img);
-            }
+async function enviarContato() {
+    try {
+        const formData = new FormData(document.getElementById('formulario-contato'));
+        const data = Object.fromEntries(formData);
+        
+        const response = await fetch('https://api.sulgoiassul.com/contato', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
         });
-    });
-    
-    images.forEach(img => imageObserver.observe(img));
+        
+        if (response.ok) {
+            alert('Mensagem enviada com sucesso!');
+            document.getElementById('formulario-contato').reset();
+        } else {
+            throw new Error('Erro ao enviar mensagem');
+        }
+    } catch (error) {
+        console.error('Erro ao enviar contato:', error);
+        alert('Erro ao enviar mensagem. Tente novamente.');
+    }
 }
-
-// Iniciar lazy loading quando o DOM estiver pronto
-document.addEventListener('DOMContentLoaded', carregarImagensLazy);
