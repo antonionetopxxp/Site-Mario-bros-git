@@ -24,3 +24,7 @@
     "eslint": "^8.0.0"
   }
 }
+"scripts": {
+  "build": "webpack --mode production",
+  "optimize": "imagemin src/assets/* --out-dir=dist/assets/"
+}
