@@ -1,16 +1,30 @@
-// script.js - Substituição total
-async function carregarNoticias() {
+// script.js - VersÃ£o com API real
+document.addEventListener('DOMContentLoaded', function() {
+    // Carregamento de notÃ­cias
+    carregarNoticiasAPI();
+    
+    // Carregamento de eventos
+    carregarEventosAPI();
+    
+    // FormulÃ¡rio de contato
+    const form = document.getElementById('formulario-contato');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        enviarContato();
+    });
+});
+
+async function carregarNoticiasAPI() {
     try {
         const response = await fetch('https://api.sulgoiassul.com/noticias');
         const noticias = await response.json();
         
-        // Substituir todas as notícias
-        const container = document.getElementById('noticias-container');
+        const container = document.getElementById('carregando');
         container.innerHTML = '';
         
         noticias.forEach(noticia => {
-            const card = document.createElement('div');
-            card.className = 'card';
+            const card = document.createElement('article');
+            card.className = 'noticia';
             card.innerHTML = `
                 <img src="${noticia.imagem}" alt="${noticia.titulo}">
                 <h3>${noticia.titulo}</h3>
@@ -21,22 +35,55 @@ async function carregarNoticias() {
             container.appendChild(card);
         });
     } catch (error) {
-        console.error('Erro ao carregar notícias:', error);
-        // Manter notícias antigas em caso de erro
-        console.log('Mantendo notícias antigas...');
+        console.error('Erro ao carregar notÃ­cias:', error);
+        document.getElementById('carregando').innerHTML = 
+            '<p>Erro ao carregar notÃ­cias. Tente novamente mais tarde.</p>';
     }
 }
-// Adicione ao seu código principal
-const images = document.querySelectorAll('img[data-src]');
-const imageObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const img = entry.target;
-      img.src = img.dataset.src;
-      img.classList.remove('lazy');
-      observer.unobserve(img);
-    }
-  });
-});
 
-images.forEach(img => imageObserver.observe(img));
+async function carregarEventosAPI() {
+    try {
+        const response = await fetch('https://api.sulgoiassul.com/eventos');
+        const eventos = await response.json();
+        
+        const container = document.getElementById('eventos-container');
+        
+        eventos.forEach(evento => {
+            const eventoDiv = document.createElement('div');
+            eventoDiv.className = 'evento';
+            eventoDiv.innerHTML = `
+                <h3>${evento.nome}</h3>
+                <p>Data: ${evento.data}</p>
+                <p>Local: ${evento.local}</p>
+            `;
+            container.appendChild(eventoDiv);
+        });
+    } catch (error) {
+        console.error('Erro ao carregar eventos:', error);
+        document.getElementById('eventos-container').innerHTML = 
+            '<p>Erro ao carregar eventos. Tente novamente mais tarde.</p>';
+    }
+}
+
+async function enviarContato() {
+    try {
+        const formData = new FormData(document.getElementById('formulario-contato'));
+        const data = Object.fromEntries(formData);
+        
+        const response = await fetch('https://api.sulgoiassul.com/contato', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+            alert('Mensagem enviada com sucesso!');
+            document.getElementById('formulario-contato').reset();
+        } else {
+            throw new Error('Erro ao enviar mensagem');
+        }
+    } catch (error) {
+        console.error('Erro ao enviar contato:', error);
+        alert('Erro ao enviar mensagem. Tente novamente.');
+    }
+}
