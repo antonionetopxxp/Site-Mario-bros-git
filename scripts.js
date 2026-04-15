@@ -1,3 +1,64 @@
+// tests.js - Testes automatizados
+function testCarregarNoticias() {
+    const container = document.getElementById('carregando');
+    carregarNoticiasAPI().then(() => {
+        if (container.innerHTML.includes('<article')) {
+            console.log('✓ Teste de carregamento de notícias: PASSOU');
+        } else {
+            console.log('✗ Teste de carregamento de notícias: FALHOU');
+        }
+    }).catch(error => {
+        console.log('✗ Teste de carregamento de notícias: FALHOU -', error);
+    });
+}
+
+function testCarregarEventos() {
+    const container = document.getElementById('eventos-container');
+    carregarEventosAPI().then(() => {
+        if (container.innerHTML.includes('<div class="evento">')) {
+            console.log('✓ Teste de carregamento de eventos: PASSOU');
+        } else {
+            console.log('✗ Teste de carregamento de eventos: FALHOU');
+        }
+    }).catch(error => {
+        console.log('✗ Teste de carregamento de eventos: FALHOU -', error);
+    });
+}
+
+function testEnviarContato() {
+    const form = document.getElementById('formulario-contato');
+    const originalSubmit = form.addEventListener;
+    
+    let submitCalled = false;
+    form.addEventListener = function(event, callback) {
+        if (event === 'submit') {
+            submitCalled = true;
+            return originalSubmit.call(this, event, callback);
+        }
+        return originalSubmit.apply(this, arguments);
+    };
+    
+    // Simular envio do formulário
+    const event = new Event('submit', { cancelable: true });
+    form.dispatchEvent(event);
+    
+    setTimeout(() => {
+        if (submitCalled) {
+            console.log('✓ Teste de envio de contato: PASSOU');
+        } else {
+            console.log('✗ Teste de envio de contato: FALHOU');
+        }
+        form.addEventListener = originalSubmit;
+    }, 100);
+}
+
+// Executar todos os testes
+testCarregarNoticias();
+testCarregarEventos();
+testEnviarContato();
+
+
+
 // events.js - Dados reais de eventos
 const eventos = [
     {
