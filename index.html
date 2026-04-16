@@ -193,7 +193,7 @@
         /* Produtos */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 25px;
             margin-top: 25px;
         }
@@ -215,13 +215,13 @@
         }
 
         .product-image {
-            height: 220px;
+            height: 150px;
             background: #f4f7f6;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #7f8c8d;
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             padding: 20px;
         }
 
@@ -233,14 +233,21 @@
         }
 
         .product-name {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             margin-bottom: 10px;
             color: #2c3e50;
         }
 
+        .product-description {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
         .product-price {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: #27ae60;
             font-weight: bold;
             margin-bottom: 15px;
@@ -284,7 +291,7 @@
             }
             
             .product-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
             
             .section-title {
@@ -343,11 +350,11 @@
                 <!-- Produto 1: Guiar Nutri -->
                 <div class="product-card">
                     <div class="product-image">
-                        <i class="fas fa-heartbeat"></i>
+                        <img src="nutri.webp" alt="Guiar Nutri" style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
                     <div class="product-info">
                         <h2 class="product-name">Guiar Nutri</h2>
-                        <p class="descricao">
+                        <p class="product-description">
                             O Guiar Nutri concentra tudo o que sustenta o consultório em um único sistema, 
                             ajudando você a ganhar tempo, ter mais controle, faturar melhor e viver com mais paz.
                         </p>
@@ -363,11 +370,11 @@
                 <!-- Produto 2: Canva -->
                 <div class="product-card">
                     <div class="product-image">
-                        <i class="fas fa-paint-brush"></i>
+                        <img src="canva.webp" alt="Canva" style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
                     <div class="product-info">
                         <h2 class="product-name">Canva para Designers</h2>
-                        <p class="descricao">
+                        <p class="product-description">
                             É a oportunidade perfeita para quem deseja dominar a criação e implementação de 
                             modelos de negócios de forma estratégica e eficaz. Com uma abordagem prática e 
                             ferramentas avançadas, você aprenderá a construir planos de negócios claros, 
