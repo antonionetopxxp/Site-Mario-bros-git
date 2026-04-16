@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vitrine Online | Fotos Inteiras e Flutuantes</title>
+    <title>Vitrine Online | Purple Style</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary: #a38d74; 
-            --bg: #f8f9fa;
-            --text: #333;
+            /* NOVA PALETA ROXA */
+            --primary: #6c5ce7;      /* Roxo vibrante principal */
+            --primary-dark: #4834d4; /* Roxo mais escuro para hover */
+            --header-bg: #2d3436;    /* Cinza quase preto para o topo */
+            --bg: #f3f0ff;           /* Fundo levemente arroxeado */
+            --text: #2d3436;
             --radius: 10px;
-            /* Sombra suave e profissional para o cartão */
-            --card-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            /* Transição padrão para efeitos suaves */
+            --card-shadow: 0 5px 15px rgba(108, 92, 231, 0.1);
             --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -23,16 +24,16 @@
         .container { max-width: 1000px; margin: 0 auto; padding: 15px; }
 
         header {
-            background: #fff;
+            background: var(--header-bg);
             padding: 15px 0;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             margin-bottom: 20px;
         }
 
         .shop-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 colunas no celular */
+            grid-template-columns: repeat(2, 1fr);
             gap: 12px;
         }
 
@@ -46,36 +47,33 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            border: 1px solid #f0f0f0;
+            border: 1px solid #e0d9ff;
             box-shadow: var(--card-shadow);
-            transition: var(--transition-smooth); /* Suavidade no hover do cartão */
+            transition: var(--transition-smooth);
         }
 
-        /* O cartão também se levanta levemente */
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            box-shadow: 0 12px 20px rgba(108, 92, 231, 0.2);
         }
 
-        /* Contêiner da imagem para controle de tamanho e fundo */
         .product-image-container {
             width: 100%;
-            height: 140px; /* Altura controlada */
-            background-color: #fff; /* Fundo branco para imagens menores */
+            height: 140px;
+            background-color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            border-bottom: 1px solid #f0f0f0; /* Borda inferior fina */
+            border-bottom: 1px solid #f0edff;
         }
 
-        /* IMAGEM DO PRODUTO INTEIRA E SEM CORTES */
         .product-image {
-            max-width: 95%; /* Pequena margem interna */
-            max-height: 95%; /* Pequena margem interna */
+            max-width: 90%;
+            max-height: 90%;
             width: auto;
             height: auto;
-            object-fit: contain; /* ESSENCIAL: Garante a imagem inteira mantendo a proporção */
+            object-fit: contain;
             display: block;
         }
 
@@ -92,26 +90,26 @@
             margin-bottom: 5px;
             height: 35px;
             overflow: hidden;
-            color: var(--primary); /* Título na cor elegante */
+            color: var(--text);
         }
 
         .price {
             font-weight: bold;
             font-size: 1.1rem;
             margin-bottom: 10px;
-            color: var(--text);
+            color: var(--primary); /* Preço em roxo */
         }
 
-        /* CSS do botão baseado no seu anterior, com o efeito FLUTUANTE */
+        /* BOTÃO ROXO FLUTUANTE */
         .add-to-cart {
             width: 100%;
             padding: 12px;
-            background: #3498db;
+            background: var(--primary);
             color: white;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: var(--transition-smooth); /* Transição suave e profissional */
+            transition: var(--transition-smooth);
             font-weight: 600;
             margin-top: auto;
             font-size: 0.8rem;
@@ -119,32 +117,29 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            /* Sombra inicial leve no botão */
-            box-shadow: 0 2px 6px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3);
         }
 
-        /* O EFEITO FLUTUANTE AQUI */
         .add-to-cart:hover {
-            background: #2980b9;
-            transform: translateY(-3px); /* Levanta o botão 3px */
-            /* Sombra do botão aumenta ao flutuar, simulando distância */
-            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.5);
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(108, 92, 231, 0.5);
         }
 
-        /* Efeito de clique no botão (active) */
         .add-to-cart:active {
-            transform: translateY(1px); /* Baixa um pouco ao clicar */
-            box-shadow: 0 2px 4px rgba(52, 152, 219, 0.4);
+            transform: translateY(1px);
         }
 
-        footer { text-align: center; padding: 20px; color: #999; font-size: 0.8rem; }
+        footer { text-align: center; padding: 25px; color: #7f8c8d; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="container">
-            <h2 style="color: var(--primary); font-size: 1.2rem; font-weight: 600;">Vitrine online</h2>
+            <h2 style="color: #fff; font-size: 1.3rem; font-weight: 600; letter-spacing: 1px;">
+                <i class="fas fa-bolt" style="color: var(--primary);"></i> VITRINE ONLINE
+            </h2>
         </div>
     </header>
 
@@ -185,14 +180,12 @@
     </footer>
 
     <script>
-        // Função para abrir link em nova aba (sua lógica original)
         function abrirLink(link) {
             if(link) {
                 window.open(link, '_blank');
             }
         }
 
-        // Event listeners para os botões conforme solicitado
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', function() {
                 const link = this.getAttribute('data-link');
