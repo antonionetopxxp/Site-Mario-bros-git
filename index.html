@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vitrine Online | Profissional</title>
+    <title>Vitrine Online | Fotos Inteiras e Flutuantes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -11,6 +11,10 @@
             --bg: #f8f9fa;
             --text: #333;
             --radius: 10px;
+            /* Sombra suave e profissional para o cartão */
+            --card-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            /* Transição padrão para efeitos suaves */
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
@@ -42,14 +46,37 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            border: 1px solid #eee;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #f0f0f0;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-smooth); /* Suavidade no hover do cartão */
         }
 
-        .product-image {
+        /* O cartão também se levanta levemente */
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        /* Contêiner da imagem para controle de tamanho e fundo */
+        .product-image-container {
             width: 100%;
-            height: 140px; 
-            object-fit: cover;
+            height: 140px; /* Altura controlada */
+            background-color: #fff; /* Fundo branco para imagens menores */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 1px solid #f0f0f0; /* Borda inferior fina */
+        }
+
+        /* IMAGEM DO PRODUTO INTEIRA E SEM CORTES */
+        .product-image {
+            max-width: 95%; /* Pequena margem interna */
+            max-height: 95%; /* Pequena margem interna */
+            width: auto;
+            height: auto;
+            object-fit: contain; /* ESSENCIAL: Garante a imagem inteira mantendo a proporção */
+            display: block;
         }
 
         .product-info {
@@ -65,15 +92,17 @@
             margin-bottom: 5px;
             height: 35px;
             overflow: hidden;
+            color: var(--primary); /* Título na cor elegante */
         }
 
         .price {
             font-weight: bold;
             font-size: 1.1rem;
             margin-bottom: 10px;
+            color: var(--text);
         }
 
-        /* CSS que você enviou */
+        /* CSS do botão baseado no seu anterior, com o efeito FLUTUANTE */
         .add-to-cart {
             width: 100%;
             padding: 12px;
@@ -82,14 +111,30 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition-smooth); /* Transição suave e profissional */
             font-weight: 600;
             margin-top: auto;
             font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            /* Sombra inicial leve no botão */
+            box-shadow: 0 2px 6px rgba(52, 152, 219, 0.3);
         }
 
+        /* O EFEITO FLUTUANTE AQUI */
         .add-to-cart:hover {
             background: #2980b9;
+            transform: translateY(-3px); /* Levanta o botão 3px */
+            /* Sombra do botão aumenta ao flutuar, simulando distância */
+            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.5);
+        }
+
+        /* Efeito de clique no botão (active) */
+        .add-to-cart:active {
+            transform: translateY(1px); /* Baixa um pouco ao clicar */
+            box-shadow: 0 2px 4px rgba(52, 152, 219, 0.4);
         }
 
         footer { text-align: center; padding: 20px; color: #999; font-size: 0.8rem; }
@@ -99,7 +144,7 @@
 
     <header>
         <div class="container">
-            <h2 style="color: var(--primary); font-size: 1.2rem;">Minha Vitrine Online</h2>
+            <h2 style="color: var(--primary); font-size: 1.2rem; font-weight: 600;">Minha Vitrine Profissional</h2>
         </div>
     </header>
 
@@ -107,7 +152,9 @@
         <div class="shop-grid">
             
             <div class="product-card">
-                <img src="nutri.webp" alt="Guiar Nutri" class="product-image">
+                <div class="product-image-container">
+                    <img src="nutri.webp" alt="Guiar Nutri" class="product-image">
+                </div>
                 <div class="product-info">
                     <h3>Guiar Nutri</h3>
                     <div class="price">R$ 297,00</div>
@@ -118,7 +165,9 @@
             </div>
 
             <div class="product-card">
-                <img src="Canva.webp" alt="Curso Canva" class="product-image">
+                <div class="product-image-container">
+                    <img src="Canva.webp" alt="Curso Canva" class="product-image">
+                </div>
                 <div class="product-info">
                     <h3>Business Canvas</h3>
                     <div class="price">R$ 27,00</div>
@@ -132,11 +181,11 @@
     </main>
 
     <footer>
-        &copy; 2026 Vitrine Profissional
+        &copy; 2026 Vitrine Profissional | Todos os direitos reservados.
     </footer>
 
     <script>
-        // Função para abrir link em nova aba
+        // Função para abrir link em nova aba (sua lógica original)
         function abrirLink(link) {
             if(link) {
                 window.open(link, '_blank');
