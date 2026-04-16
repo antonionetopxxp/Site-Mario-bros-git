@@ -269,6 +269,93 @@
             color: white;
         }
         
+        /* Site integrado */
+        .site-integrado {
+            margin-top: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .site-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .site-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 200px;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            font-size: 3rem;
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .product-price {
+            font-size: 1.2rem;
+            color: var(--success);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            padding: 10px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .add-to-cart:hover {
+            background: var(--secondary);
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .header-content {
@@ -282,6 +369,10 @@
             
             .dashboard-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
         }
     </style>
@@ -405,6 +496,25 @@
             </table>
         </section>
         
+        <!-- Site Integrado -->
+        <section class="site-integrado">
+            <div class="site-header">
+                <h2 class="site-title"><i class="fas fa-globe-americas"></i> Site Integrado</h2>
+                <div class="site-controls">
+                    <button class="btn btn-primary" onclick="ativarModoEdicao()">
+                        <i class="fas fa-edit"></i> Modo Edição
+                    </button>
+                    <button class="btn btn-success" onclick="salvarSite()">
+                        <i class="fas fa-save"></i> Salvar Site
+                    </button>
+                </div>
+            </div>
+            
+            <div class="product-grid" id="produtosSite">
+                <!-- Produtos serão adicionados aqui dinamicamente -->
+            </div>
+        </section>
+        
         <!-- Relatórios -->
         <section class="report-section">
             <h2 class="section-title"><i class="fas fa-chart-bar"></i> Relatórios</h2>
@@ -476,59 +586,4 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script>
-        // Estruturas de dados
-        let produtos = JSON.parse(localStorage.getItem('produtos')) || [
-            {id: "1", nome: "Produto A", preco: 99.99},
-            {id: "2", nome: "Produto B", preco: 149.99},
-            {id: "3", nome: "Produto C", preco: 299.99},
-            {id: "4", nome: "Produto D", preco: 499.99},
-            {id: "5", nome: "Produto E", preco: 799.99}
-        ];
-        
-        let clientes = JSON.parse(localStorage.getItem('clientes')) || [
-            {id: "1", nome: "João Silva", email: "joao@email.com"},
-            {id: "2", nome: "Maria Oliveira", email: "maria@email.com"},
-            {id: "3", nome: "Pedro Santos", email: "pedro@email.com"}
-        ];
-        
-        let vendas = JSON.parse(localStorage.getItem('vendas')) || [
-            {id: "1", produtoId: "1", clienteId: "1", quantidade: 2, data: "2023-01-15", valor: 199.98},
-            {id: "2", produtoId: "2", clienteId: "2", quantidade: 1, data: "2023-02-20", valor: 149.99},
-            {id: "3", produtoId: "3", clienteId: "1", quantidade: 1, data: "2023-03-10", valor: 299.99}
-        ];
-        
-        // DOM Elements
-        const formProduto = document.getElementById('formProduto');
-        const produtosTbody = document.getElementById('produtosTbody');
-        const clientesTbody = document.getElementById('clientesTbody');
-        const filtroProduto = document.getElementById('filtroProduto');
-        const filtroCliente = document.getElementById('filtroCliente');
-        const filtroData = document.getElementById('filtroData');
-        const btnExportar = document.getElementById('btnExportar');
-        const totalProdutosEl = document.getElementById('totalProdutos');
-        const totalClientesEl = document.getElementById('totalClientes');
-        const valorTotalEl = document.getElementById('valorTotal');
-        const totalVendasEl = document.getElementById('totalVendas');
-        
-        // Inicialização
-        document.addEventListener('DOMContentLoaded', function() {
-            renderizarProdutos();
-            renderizarClientes();
-            atualizarEstatisicas();
-            configurarFiltros();
-            criarGraficos();
-            inicializarDashboards();
-            configurarExportacao();
-        });
-        
-        // Persistência em localStorage
-        function salvarDados() {
-            localStorage.setItem('produtos', JSON.stringify(produtos));
-            localStorage.setItem('clientes', JSON.stringify(clientes));
-            localStorage.setItem('vendas', JSON.stringify(vendas));
-        }
-        
-        // Renderização de dados
-        function renderizarProdutos(filtro =
+    <script src="
