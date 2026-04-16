@@ -3,148 +3,494 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vitrine Online | Profissional</title>
+    <title>Vitrine Online Profissional</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #a38d74; 
-            --accent: #27ae60;
-            --bg: #f8f9fa;
-            --text: #333;
-            --radius: 10px;
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background-color: var(--bg); color: var(--text); }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 15px; }
+        /* Container principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
+        /* Header profissional */
         header {
-            background: #fff;
-            padding: 10px 0;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        /* GRID RESPONSIVO: 2 colunas no celular, 3 ou 4 no PC */
-        .shop-grid {
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Estatísticas */
+        .stats {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 colunas no mobile */
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border-left: 5px solid #3498db;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+
+        /* Seções */
+        section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #3498db;
+            display: flex;
+            align-items: center;
             gap: 12px;
         }
 
-        @media (min-width: 768px) {
-            .shop-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+        .section-title i {
+            color: #3498db;
+        }
+
+        /* Tabelas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+            text-align: left;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #e3f2fd;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* Botões */
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .btn-success {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        /* Formulários */
+        .form-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        /* Produtos */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
         }
 
         .product-card {
-            background: #fff;
-            border-radius: var(--radius);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             overflow: hidden;
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            border: 1px solid #eee;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            height: 100%;
         }
 
-        /* IMAGEM CONTROLADA */
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
         .product-image {
-            width: 100%;
-            height: 140px; /* Altura reduzida para não ocupar a tela toda */
-            object-fit: cover;
-            border-bottom: 1px solid #f0f0f0;
+            height: 220px;
+            background: #f4f7f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 3.5rem;
+            padding: 20px;
         }
 
         .product-info {
-            padding: 10px;
+            padding: 20px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            color: #27ae60;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 12px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            margin-top: auto;
+        }
+
+        .add-to-cart:hover {
+            background: #2980b9;
+        }
+
+        /* Footer */
+        footer {
             text-align: center;
+            padding: 30px;
+            color: #7f8c8d;
+            margin-top: 50px;
+            border-top: 1px solid #eee;
         }
 
-        .product-info h3 {
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-            height: 35px; /* Trava altura do título */
-            overflow: hidden;
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
         }
-
-        .price {
-            font-weight: bold;
-            color: var(--text);
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-        }
-
-        .btn-buy {
-            background: var(--accent);
-            color: #fff;
-            text-decoration: none;
-            padding: 8px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        footer { text-align: center; padding: 20px; color: #999; font-size: 0.8rem; }
     </style>
 </head>
 <body>
-
+    <!-- Header Principal -->
     <header>
         <div class="container">
-            <h2 style="color: var(--primary); font-size: 1.2rem;">Minha Vitrine</h2>
+            <div class="header-content">
+                <div>
+                    <h1><i class="fas fa-store"></i> Vitrine Online Profissional</h1>
+                    <p>Sistema de gestão de produtos e vendas avançado</p>
+                </div>
+                <div>
+                    <button class="btn btn-success" id="btnExportar">
+                        <i class="fas fa-download"></i> Exportar Dados
+                    </button>
+                </div>
+            </div>
         </div>
     </header>
 
-    <main class="container">
-        <div class="shop-grid">
-            
-            <div class="product-card">
-                <img src="nutri.webp" alt="Guiar Nutri" class="product-image">
-                <div class="product-info">
-                    <h3>Guiar Nutri</h3>
-                    <div class="price">R$ 297,00</div>
-                    <a href="https://shop.maisfy.com.br/checkout/Dcgnm2h7/Udzu53c6/Ucqkhnj5" class="btn-buy">Comprar</a>
-                </div>
+    <div class="container">
+        <!-- Estatísticas -->
+        <div class="stats">
+            <div class="stat-card">
+                <i class="fas fa-boxes"></i>
+                <div class="stat-label">Total de Produtos</div>
+                <div class="stat-value" id="totalProdutos">1</div>
             </div>
-
-            <div class="product-card">
-                <img src="Canva.webp" alt="Curso Canva" class="product-image">
-                <div class="product-info">
-                    <h3>Business Canvas</h3>
-                    <div class="price">R$ 27,00</div>
-                    <a href="https://shop.maisfy.com.br/checkout/Dcgnm2h7/Udzu53c6/Ucqkhnj5" class="btn-buy">Comprar</a>
-                </div>
+            <div class="stat-card">
+                <i class="fas fa-users"></i>
+                <div class="stat-label">Total de Clientes</div>
+                <div class="stat-value" id="totalClientes">0</div>
             </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/150" alt="Novo Produto" class="product-image">
-                <div class="product-info">
-                    <h3>Novo Produto</h3>
-                    <div class="price">R$ 0,00</div>
-                    <a href="#" class="btn-buy">Comprar</a>
-                </div>
+            <div class="stat-card">
+                <i class="fas fa-dollar-sign"></i>
+                <div class="stat-label">Valor Total</div>
+                <div class="stat-value" id="valorTotal">R$ 0,00</div>
             </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/150" alt="Novo Produto" class="product-image">
-                <div class="product-info">
-                    <h3>Novo Produto</h3>
-                    <div class="price">R$ 0,00</div>
-                    <a href="#" class="btn-buy">Comprar</a>
-                </div>
+            <div class="stat-card">
+                <i class="fas fa-chart-line"></i>
+                <div class="stat-label">Vendas Totais</div>
+                <div class="stat-value" id="totalVendas">0</div>
             </div>
-
         </div>
-    </main>
+
+        <!-- Produtos -->
+        <section>
+            <h2 class="section-title"><i class="fas fa-box"></i> Produtos em Destaque</h2>
+            <div class="product-grid">
+                <!-- Produto 1: Guiar Nutri -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-name">Guiar Nutri</h2>
+                        <p class="descricao">
+                            O Guiar Nutri concentra tudo o que sustenta o consultório em um único sistema, 
+                            ajudando você a ganhar tempo, ter mais controle, faturar melhor e viver com mais paz.
+                        </p>
+                        <div class="financials">
+                            <p><strong>Preço de Venda:</strong> R$ 297,00</p>
+                        </div>
+                        <button class="add-to-cart" onclick="window.open('https://shop.maisfy.com.br/checkout/Dcgnm2h7/Udzu53c6/Ucqkhnj5', '_blank')">
+                            <i class="fas fa-shopping-cart"></i> Comprar Agora
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Produto 2: Canva -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-name">Canva para Designers</h2>
+                        <p class="descricao">
+                            É a oportunidade perfeita para quem deseja dominar a criação e implementação de 
+                            modelos de negócios de forma estratégica e eficaz. Com uma abordagem prática e 
+                            ferramentas avançadas, você aprenderá a construir planos de negócios claros, 
+                            inovadores e escaláveis.
+                        </p>
+                        <div class="financials">
+                            <p><strong>Preço de Venda:</strong> R$ 27,00</p>
+                        </div>
+                        <button class="add-to-cart" onclick="window.open('https://shop.maisfy.com.br/checkout/Dcgnm2h7/Udzu53c6/Ucqkhnj5', '_blank')">
+                            <i class="fas fa-shopping-cart"></i> Comprar Agora
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulário de Cadastro -->
+        <section class="form-section">
+            <h2 class="section-title"><i class="fas fa-plus-circle"></i> Cadastro de Produtos</h2>
+            <form id="formProduto">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="idProduto">ID do Produto:</label>
+                        <input type="text" id="idProduto" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nomeProduto">Nome do Produto:</label>
+                        <input type="text" id="nomeProduto" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="precoProduto">Preço:</label>
+                        <input type="number" id="precoProduto" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-plus"></i> Adicionar Produto
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- Tabela de Produtos -->
+        <section>
+            <h2 class="section-title"><i class="fas fa-box"></i> Todos os Produtos</h2>
+            <table id="produtosTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Produto</th>
+                        <th>Descrição</th>
+                        <th>Preço</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="produtosTbody">
+                    <!-- Produtos serão adicionados aqui dinamicamente -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Tabela de Clientes -->
+        <section>
+            <h2 class="section-title"><i class="fas fa-user"></i> Clientes</h2>
+            <table id="clientesTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Vendas</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="clientesTbody">
+                    <!-- Clientes serão adicionados aqui dinamicamente -->
+                </tbody>
+            </table>
+        </section>
+    </div>
 
     <footer>
-        &copy; 2026 Vitrine Profissional
+        <p>Vitrine Online Profissional &copy; 2023 | Sistema de Gestão Avançado</p>
     </footer>
 
+    <script>
+        // Função para adicionar produtos à tabela
+        function adicionarProduto(id, nome, descricao, preco) {
+            const tbody = document.getElementById('produtosTbody');
+            const row = document.createElement('tr');
+            
+            row.innerHTML = `
+                <td>${id}</td>
+                <td>${nome}</td>
+                <td>${descricao}</td>
+                <td>R$ ${preco.toFixed(2)}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm" onclick="editarProduto('${id}')">
+                        <i class="fas fa-edit"></i> Editar
+                    </button>
+                    <button class="btn btn-danger btn-sm" onclick="excluirProduto('${id}')">
+                        <i class="fas fa-trash"></i> Excluir
+                    </button>
+                </td>
+            `;
+            
+            tbody.appendChild(row);
+        }
+
+        // Exemplo de produto adicional
+        adicionarProduto('1', 'Guiar Nutri', 'Sistema de gestão para consultórios nutricionais', '297.00');
+        adicionarProduto('2', 'Canva para Designers', 'Plataforma de design para designers profissionais', '27.00');
+
+        // Funções para ações de produtos
+        function editarProduto(id) {
+            alert(`Editar produto com ID: ${id}`);
+        }
+
+        function excluirProduto(id) {
+            if(confirm('Tem certeza que deseja excluir este produto?')) {
+                alert(`Produto com ID: ${id} excluído com sucesso!`);
+            }
+        }
+    </script>
 </body>
 </html>
