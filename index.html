@@ -6,96 +6,308 @@
     <title>Vitrine Online | Purple Style</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    /* Estilo Geral do Card do Produto */
-    .product-row {
-        background: #ffffff;
-        border-radius: 12px;
-        padding: 15px;
-        margin-bottom: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        border: 1px solid #eee;
-        transition: transform 0.2s ease;
-    }
+        :root {
+            --primary: #a38d74;
+            --primary-dark: #8a765f;
+            --sidebar-dark: #1e1e26;
+            --bg-light: #f8f9fa;
+            --text-main: #333;
+            --white: #ffffff;
+            --success: #27ae60;
+        }
 
-    .product-row:hover {
-        transform: translateY(-3px);
-        border-color: #a38d74;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+        }
 
-    /* Imagem do Produto */
-    .product-image {
-        width: 60px;
-        height: 60px;
-        border-radius: 8px;
-        object-fit: cover;
-        margin-right: 15px;
-    }
+        /* --- Barra Lateral --- */
+        .sidebar {
+            width: 240px;
+            background-color: var(--sidebar-dark);
+            height: 100vh;
+            color: white;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s;
+        }
 
-    /* Textos e Informações */
-    .product-info-group {
-        display: flex;
-        align-items: center;
-        flex-grow: 1;
-    }
+        .sidebar-header {
+            padding: 20px;
+            text-align: center;
+            background: rgba(0,0,0,0.2);
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
 
-    .product-details h4 {
-        margin: 0;
-        color: #333;
-        font-size: 16px;
-    }
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            flex-grow: 1;
+        }
 
-    .product-details span {
-        font-size: 12px;
-        color: #888;
-        display: block;
-    }
+        .menu-item {
+            padding: 15px 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: 0.2s;
+            color: #bdc3c7;
+            text-decoration: none;
+        }
 
-    /* Valores e Comissões */
-    .product-pricing {
-        text-align: right;
-        margin: 0 30px;
-    }
+        .menu-item:hover, .menu-item.active {
+            background: var(--primary);
+            color: white;
+        }
 
-    .price-label {
-        font-size: 11px;
-        color: #999;
-        text-transform: uppercase;
-        display: block;
-    }
+        /* --- Conteúdo Principal --- */
+        .main-content {
+            margin-left: 240px;
+            padding: 30px;
+            width: calc(100% - 240px);
+        }
 
-    .price-value {
-        font-weight: bold;
-        color: #27ae60; /* Verde para destacar seu lucro */
-        font-size: 18px;
-    }
+        .header-title {
+            margin-bottom: 30px;
+        }
 
-    /* Botão de Link */
-    .btn-action-link {
-        background-color: #a38d74;
-        color: white !important;
-        text-decoration: none;
-        padding: 10px 20px;
-        border-radius: 6px;
-        font-weight: bold;
-        font-size: 14px;
-        transition: background 0.3s;
-    }
+        /* Cards de Resumo */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
 
-    .btn-action-link:hover {
-        background-color: #8a765f;
-    }
+        .card-stat {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
 
-    /* Responsividade para Celular */
-    @media (max-width: 600px) {
-        .product-row { flex-direction: column; text-align: center; }
-        .product-info-group { flex-direction: column; margin-bottom: 15px; }
-        .product-image { margin: 0 0 10px 0; }
-        .product-pricing { margin: 10px 0; text-align: center; }
-    }
-</style>
+        .card-stat h4 { margin: 0; font-size: 13px; color: #888; text-transform: uppercase; }
+        .card-stat p { margin: 10px 0 0; font-size: 22px; font-weight: bold; }
+
+        /* Tabela e Filtros */
+        .content-box {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .table-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #f1f1f1;
+            padding: 12px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 15px 12px;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        .prod-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .btn-link {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .badge {
+            background: #e1f5fe;
+            color: #039be5;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { width: 60px; }
+            .sidebar-header, .menu-item span { display: none; }
+            .main-content { margin-left: 60px; width: calc(100% - 60px); }
+            .table-controls { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-header">AFILIADO HUB</div>
+        <nav class="menu">
+            <a href="#" class="menu-item active"><span>🏠 Dashboard</span></a>
+            <a href="#" class="menu-item"><span>📦 Meus Produtos</span></a>
+            <a href="#" class="menu-item"><span>📊 Relatórios</span></a>
+            <a href="#" class="menu-item"><span>🔗 Links Úteis</span></a>
+            <a href="#" class="menu-item"><span>⚙️ Configurações</span></a>
+        </nav>
+        <div class="menu-item" style="margin-top: auto;"><span>🚪 Sair</span></div>
+    </div>
+
+    <div class="main-content">
+        <div class="header-title">
+            <h1>Visão Geral de Produtos</h1>
+        </div>
+
+        <div class="stats-container">
+            <div class="card-stat">
+                <h4>Produtos Sugeridos</h4>
+                <p>04</p>
+            </div>
+            <div class="card-stat">
+                <h4>Comissão Total Estimada</h4>
+                <p>R$ 445,18</p>
+            </div>
+            <div class="card-stat" style="border-right: 4px solid var(--success);">
+                <h4>Conversão Média</h4>
+                <p>12.5%</p>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <div class="table-controls">
+                <input type="text" id="search" placeholder="🔍 Filtrar produtos..." onkeyup="filter()">
+                <span class="badge">PRODUTOS EM ALTA (2025)</span>
+            </div>
+
+            <table id="myTable">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Nicho</th>
+                        <th>Preço Máx.</th>
+                        <th>Comissão</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="https://hotmart.s3.amazonaws.com/product_contents/20e3a4e9-6066-48a6-981a-969426f8d388/product_cover_1775653287699.webp" class="prod-img">
+                            <strong>Guiar Nutri</strong>
+                        </td>
+                        <td>Adm / Negócios</td>
+                        <td>R$ 297,00</td>
+                        <td style="color: var(--success); font-weight: bold;">R$ 111,07</td>
+                        <td><a href="#" class="btn-link">Ver Link</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://via.placeholder.com/40/e67e22/ffffff?text=C" class="prod-img">
+                            <strong>Canva Pack para Nutris</strong>
+                        </td>
+                        <td>Design / Social Media</td>
+                        <td>R$ 97,00</td>
+                        <td style="color: var(--success); font-weight: bold;">R$ 47,00</td>
+                        <td><a href="#" class="btn-link">Ver Link</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://via.placeholder.com/40/2ecc71/ffffff?text=M" class="prod-img">
+                            <strong>Marketing para Clínicas</strong>
+                        </td>
+                        <td>Tráfego Pago</td>
+                        <td>R$ 497,00</td>
+                        <td style="color: var(--success); font-weight: bold;">R$ 198,00</td>
+                        <td><a href="#" class="btn-link">Ver Link</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://via.placeholder.com/40/9b59b6/ffffff?text=IA" class="prod-img">
+                            <strong>IA na Nutrição (Masterclass)</strong>
+                        </td>
+                        <td>Tecnologia</td>
+                        <td>R$ 197,00</td>
+                        <td style="color: var(--success); font-weight: bold;">R$ 89,11</td>
+                        <td><a href="#" class="btn-link">Ver Link</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function filter() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 1; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+O que foi adicionado:
+Barra Lateral (Sidebar): Menu fixo à esquerda com ícones (emoji) e hover effect. No celular, ela se retrai automaticamente.
+
+Mix de Produtos (Esteira):
+
+Guiar Nutri: Seu produto principal.
+
+Canva Pack: Produto de entrada (ticket baixo) para nutricionistas.
+
+Marketing para Clínicas: Produto de ticket maior (mais comissão).
+
+IA na Nutrição: Produto "Trend" (tendência) para atrair curiosidade.
+
+Filtro Inteligente: O campo de busca agora funciona em toda a lista.
+
+Cards de Resumo: No topo, você tem uma visão rápida do desempenho (simulado).
+
+Para usar, basta salvar como um arquivo .html ou colar no seu sistema de gerenciamento de site!
     
     <style>
         :root {
@@ -226,7 +438,140 @@
     </style>
 </head>
 <body>
+<div class="sidebar">
+        <div class="sidebar-header">AFILIADO HUB</div>
+        <nav class="menu">
+            <a href="#" class="menu-item active"><span>🏠 Dashboard</span></a>
+            <a href="#" class="menu-item"><span>📦 Meus Produtos</span></a>
+            <a href="#" class="menu-item"><span>📊 Relatórios</span></a>
+            <a href="#" class="menu-item"><span>🔗 Links Úteis</span></a>
+            <a href="#" class="menu-item"><span>⚙️ Configurações</span></a>
+        </nav>
+        <div class="menu-item" style="margin-top: auto;"><span>🚪 Sair</span></div>
+    </div>
 
+    <div class="main-content">
+        <div class="header-title">
+            <h1>Visão Geral de Produtos</h1>
+        </div>
+
+        <div class="stats-container">
+            <div class="card-stat">
+                <h4>Produtos Sugeridos</h4>
+                <p>04</p>
+            </div>
+            <div class="card-stat">
+                <h4>Comissão Total Estimada</h4>
+                <p>R$ 445,18</p>
+            </div>
+            <div class="card-stat" style="border-right: 4px solid var(--success);">
+                <h4>Conversão Média</h4>
+                <p>12.5%</p>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <div class="table-controls">
+                <input type="text" id="search" placeholder="🔍 Filtrar produtos..." onkeyup="filter()">
+                <span class="badge">PRODUTOS EM ALTA (2025)</span>
+            </div>
+            <table id="myTable">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Nicho</th>
+                        <th>Preço Máx.</th>
+                        <th>Comissão</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="https://hotmart.s3.amazonaws.com/product_contents/20e3a4e9-6066-48a6-981a-969426f8d388/product_cover_1775653287699.webp" class="prod-img">
+                            <strong>Guiar Nutri</strong>
+                        </td>
+                        <td>Adm / Negócios</td>
+                        <td>R$ 297,00</td>
+                        <td style="color: var(--success); font-weight: bold;">R$ 111,07</td>
+                        <td><a href="#" class="btn-link">Ver Link</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://via.placeholder.com/40/e67e22/ffffff?text=C" class="prod-img">
+                            <strong>Canva Pack para Nutris</strong>
+                        </td>
+                        <td>Design / Social Media</td>
+                        <td>R$ 97,00</td>
+                        <td style="color: var(--success); font-weight: bold;">R$ 47,00</td>
+                        <td><a href="#" class="btn-link">Ver Link</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://via.placeholder.com/40/2ecc71/ffffff?text=M" class="prod-img">
+                            <strong>Marketing para Clínicas</strong>
+                        </td>
+                        <td>Tráfego Pago</td>
+                        <td>R$ 497,00</td>
+                        <td style="color: var(--success); font-weight: bold;">R$ 198,00</td>
+                        <td><a href="#" class="btn-link">Ver Link</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://via.placeholder.com/40/9b59b6/ffffff?text=IA" class="prod-img">
+                            <strong>IA na Nutrição (Masterclass)</strong>
+                        </td>
+                        <td>Tecnologia</td>
+                        <td>R$ 197,00</td>
+                        <td style="color: var(--success); font-weight: bold;">R$ 89,11</td>
+                        <td><a href="#" class="btn-link">Ver Link</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function filter() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 1; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+O que foi adicionado:
+Barra Lateral (Sidebar): Menu fixo à esquerda com ícones (emoji) e hover effect. No celular, ela se retrai automaticamente.
+
+Mix de Produtos (Esteira):
+
+Guiar Nutri: Seu produto principal.
+
+Canva Pack: Produto de entrada (ticket baixo) para nutricionistas.
+
+Marketing para Clínicas: Produto de ticket maior (mais comissão).
+
+IA na Nutrição: Produto "Trend" (tendência) para atrair curiosidade.
+
+Filtro Inteligente: O campo de busca agora funciona em toda a lista.
+
+Cards de Resumo: No topo, você tem uma visão rápida do desempenho (simulado).
+
+Para usar, basta salvar como um arquivo .html ou colar no seu sistema de gerenciamento de site!
     <header>
         <div class="container">
             <h2 style="color: #fff; font-size: 1.3rem; font-weight: 600; letter-spacing: 1px;">
