@@ -37,61 +37,90 @@
             gap: 12px;
         }
 
-        @media (min-width: 768px) {
-            .shop-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
-        }
+        HTML
+<div class="product-description-container">
+    
+    <div class="description-image">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=400&q=80" alt="Capa do E-book">
+    </div>
 
-        .product-card {
-            background: #fff;
-            border-radius: var(--radius);
-            overflow: hidden;
-            display: flex;
+    <div class="description-text">
+        <h3>📖 E-book Receitas Saudáveis</h3>
+        <p class="subtitle">Sabor e Equilíbrio em 80 Opções Deliciosas</p>
+        
+        <p>Você não precisa passar fome ou viver de salada para emagrecer. Com este guia, você vai descobrir como emagrecer com prazer, comendo comida de verdade!</p>
+        
+        <ul class="features-list">
+            <li>✅ 80 receitas práticas em 8 capítulos completos.</li>
+            <li>✅ 50 imagens ilustradas para te inspirar.</li>
+            <li>✅ Introdução sobre mudança de mentalidade e foco.</li>
+            <li>✅ Do café da manhã às sobremesas saudáveis.</li>
+        </ul>
+        
+        <div style="margin-top: 20px;">
+            <a href="SEU_LINK_AQUI" class="btn-link" style="padding: 12px 25px;">Adquirir E-book Agora</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .product-description-container {
+        display: flex; /* Alinha os filhos em linha */
+        align-items: flex-start;
+        gap: 30px; /* Espaço entre a imagem e o texto */
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        margin-top: 30px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .description-image {
+        flex: 0 0 300px; /* Largura fixa para a imagem */
+    }
+
+    .description-image img {
+        width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .description-text {
+        flex: 1; /* Ocupa o restante do espaço */
+    }
+
+    .description-text h3 {
+        margin-top: 0;
+        color: #a38d74;
+        font-size: 24px;
+    }
+
+    .subtitle {
+        font-weight: bold;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    .features-list {
+        list-style: none;
+        padding: 0;
+        font-size: 15px;
+        line-height: 1.8;
+        color: #444;
+    }
+
+    /* Ajuste para celular: imagem em cima, texto embaixo */
+    @media (max-width: 768px) {
+        .product-description-container {
             flex-direction: column;
-            border: 1px solid #e0d9ff;
-            box-shadow: var(--card-shadow);
-            transition: var(--transition-smooth);
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(108, 92, 231, 0.2);
-        }
-
-        .product-image-container {
-            width: 100%;
-            height: 140px;
-            background-color: #fff;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border-bottom: 1px solid #f0edff;
         }
-
-        .product-image {
-            max-width: 90%;
-            max-height: 90%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            display: block;
+        .description-image {
+            flex: none;
+            width: 100%;
+            max-width: 300px;
         }
-
-        .product-info {
-            padding: 10px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .product-info h3 {
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-            height: 35px;
-            overflow: hidden;
-            color: var(--text);
-        }
+    }
 
         .price {
             font-weight: bold;
@@ -185,19 +214,30 @@
                     </button>
                 </div>
             </div>
+    <div class="product-description-container">
+    
+    <div class="description-image">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=400&q=80" alt="Capa do E-book">
     </div>
 
-        <div style="margin-top: 30px; background: white; padding: 25px; border-radius: 12px; border-left: 5px solid var(--primary);">
-            <h3 style="margin-top:0;">📖 Descrição: E-book Receitas Saudáveis</h3>
-            <p>Você não precisa passar fome ou viver de salada para emagrecer. Com o <strong>E-book “Receitas Saudáveis”</strong>, você descobre como emagrecer com prazer.</p>
-            <ul style="font-size: 14px; color: #555; line-height: 1.6;">
-                <li>✅ 80 receitas práticas e saborosas.</li>
-                <li>✅ 50 imagens ilustradas para te inspirar.</li>
-                <li>✅ Introdução sobre mudança de mentalidade definitiva.</li>
-                <li>✅ Dicas extras para manter o foco sem abrir mão do sabor.</li>
-            </ul>
+    <div class="description-text">
+        <h3>📖 E-book Receitas Saudáveis</h3>
+        <p class="subtitle">Sabor e Equilíbrio em 80 Opções Deliciosas</p>
+        
+        <p>Você não precisa passar fome ou viver de salada para emagrecer. Com este guia, você vai descobrir como emagrecer com prazer, comendo comida de verdade!</p>
+        
+        <ul class="features-list">
+            <li>✅ 80 receitas práticas em 8 capítulos completos.</li>
+            <li>✅ 50 imagens ilustradas para te inspirar.</li>
+            <li>✅ Introdução sobre mudança de mentalidade e foco.</li>
+            <li>✅ Do café da manhã às sobremesas saudáveis.</li>
+        </ul>
+        
+        <div style="margin-top: 20px;">
+            <a href="SEU_LINK_AQUI" class="btn-link" style="padding: 12px 25px;">Adquirir E-book Agora</a>
         </div>
     </div>
+</div>
     </main>
 
     <footer>
