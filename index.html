@@ -5,6 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vitrine Online | Purple Style</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Estilo Geral do Card do Produto */
+    .product-row {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 15px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        border: 1px solid #eee;
+        transition: transform 0.2s ease;
+    }
+
+    .product-row:hover {
+        transform: translateY(-3px);
+        border-color: #a38d74;
+    }
+
+    /* Imagem do Produto */
+    .product-image {
+        width: 60px;
+        height: 60px;
+        border-radius: 8px;
+        object-fit: cover;
+        margin-right: 15px;
+    }
+
+    /* Textos e Informações */
+    .product-info-group {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+    }
+
+    .product-details h4 {
+        margin: 0;
+        color: #333;
+        font-size: 16px;
+    }
+
+    .product-details span {
+        font-size: 12px;
+        color: #888;
+        display: block;
+    }
+
+    /* Valores e Comissões */
+    .product-pricing {
+        text-align: right;
+        margin: 0 30px;
+    }
+
+    .price-label {
+        font-size: 11px;
+        color: #999;
+        text-transform: uppercase;
+        display: block;
+    }
+
+    .price-value {
+        font-weight: bold;
+        color: #27ae60; /* Verde para destacar seu lucro */
+        font-size: 18px;
+    }
+
+    /* Botão de Link */
+    .btn-action-link {
+        background-color: #a38d74;
+        color: white !important;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 14px;
+        transition: background 0.3s;
+    }
+
+    .btn-action-link:hover {
+        background-color: #8a765f;
+    }
+
+    /* Responsividade para Celular */
+    @media (max-width: 600px) {
+        .product-row { flex-direction: column; text-align: center; }
+        .product-info-group { flex-direction: column; margin-bottom: 15px; }
+        .product-image { margin: 0 0 10px 0; }
+        .product-pricing { margin: 10px 0; text-align: center; }
+    }
+</style>
+    
     <style>
         :root {
             /* NOVA PALETA ROXA */
@@ -159,7 +251,24 @@
                 </div>
             </div>
 
-            <div class="product-card">
+
+<div class="product-row">
+    <div class="product-info-group">
+        <img src="https://hotmart.s3.amazonaws.com/product_contents/20e3a4e9-6066-48a6-981a-969426f8d388/product_cover_1775653287699.webp" alt="Guiar Nutri" class="product-image">
+        <div class="product-details">
+            <h4>Guiar Nutri</h4>
+            <span>Administração e Negócios</span>
+        </div>
+    </div>
+
+    <div class="product-pricing">
+        <span class="price-label">Você ganha:</span>
+        <span class="price-value">R$ 111,07</span>
+    </div>
+
+    <a href="SEU_LINK_AQUI" target="_blank" class="btn-action-link">Pegar Link</a>
+</div>
+ <div class="product-card">
                 <div class="product-image-container">
                     <img src="Canva.webp" alt="Curso Canva" class="product-image">
                 </div>
