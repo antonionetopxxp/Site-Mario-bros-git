@@ -56,13 +56,25 @@
             border-bottom:1px solid #f0edff;
             flex-shrink:0;
         }
+        @keyframes wiggle {
+            0%   { transform: scale(1.04) rotate(0deg); }
+            15%  { transform: scale(1.06) rotate(-2deg); }
+            30%  { transform: scale(1.06) rotate(2deg); }
+            45%  { transform: scale(1.06) rotate(-2deg); }
+            60%  { transform: scale(1.06) rotate(2deg); }
+            75%  { transform: scale(1.06) rotate(-1deg); }
+            90%  { transform: scale(1.05) rotate(1deg); }
+            100% { transform: scale(1.04) rotate(0deg); }
+        }
         .product-image {
             width:100%; height:100%;
             object-fit:cover;
             display:block;
-            transition:transform 0.4s ease;
+            transition:transform 0.3s ease;
         }
-        .product-card:hover .product-image { transform:scale(1.04); }
+        .product-card:hover .product-image {
+            animation: wiggle 0.6s ease forwards;
+        }
 
         .product-info {
             padding:14px 12px;
